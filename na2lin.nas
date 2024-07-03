@@ -1,5 +1,5 @@
 #first_start
- definehotkey #dash_mechanic E
+ definehotkey dash_mechanic|E
 quit
 
 #dash_mechanic
