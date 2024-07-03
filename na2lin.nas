@@ -9,17 +9,17 @@
 #dashMechanic
  motd horspeed=3
  cpemsg bot1 &fDash:&a■■■■■■&4■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&a■■■■■&4■■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&a■■■■&4■■■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&a■■■&4■■■■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&a■■&4■■■■■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&a■&4■■■■■■ 
- delay 100
+ delay 120
  cpemsg bot1 &fDash:&4■■■■■■■ 
  motd horspeed=1
  delay 200
