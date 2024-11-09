@@ -93,37 +93,37 @@ quit
 quit
 
 #10-showHP
- cpemsg bot2 &fHealth:&m♥♥♥♥♥
+ cpemsg bot1 &fHealth:&m♥♥♥♥♥
 quit
 #9-showHP
- cpemsg bot2 &fHealth:&m♥♥♥♥╝
+ cpemsg bot1 &fHealth:&m♥♥♥♥╝
 quit
 #8-showHP
- cpemsg bot2 &fHealth:&m♥♥♥♥&0♥
+ cpemsg bot1 &fHealth:&m♥♥♥♥&0♥
 quit
 #7-showHP
- cpemsg bot2 &fHealth:&m♥♥♥╝&0♥
+ cpemsg bot1 &fHealth:&m♥♥♥╝&0♥
 quit
 #6-showHP
- cpemsg bot2 &fHealth:&m♥♥♥&0♥♥
+ cpemsg bot1 &fHealth:&m♥♥♥&0♥♥
 quit
 #5-showHP
- cpemsg bot2 &fHealth:&m♥♥╝&0♥♥
+ cpemsg bot1 &fHealth:&m♥♥╝&0♥♥
 quit
 #4-showHP
- cpemsg bot2 &fHealth:&m♥♥&0♥♥♥
+ cpemsg bot1 &fHealth:&m♥♥&0♥♥♥
 quit
 #3-showHP
- cpemsg bot2 &fHealth:&m♥╝&0♥♥♥
+ cpemsg bot1 &fHealth:&m♥╝&0♥♥♥
 quit
 #2-showHP
- cpemsg bot2 &fHealth:&m♥&0♥♥♥♥
+ cpemsg bot1 &fHealth:&m♥&0♥♥♥♥
 quit
 #1-showHP
- cpemsg bot2 &fHealth:&m╝&0♥♥♥♥
+ cpemsg bot1 &fHealth:&m╝&0♥♥♥♥
 quit
 #0-showHP
- cpemsg bot2 &fHealth:&m&0♥♥♥♥♥
+ cpemsg bot1 &fHealth:&m&0♥♥♥♥♥
 quit
 
 #healthBAR-CHANGE
@@ -135,7 +135,8 @@ quit
  if loss-gain|=|1 setadd hp {AMNT}
  if hp|>|mxMYhealth set hp {mxMYhealth}
  if hp|<|0 set hp 0
- msg &xTook {hp} points of &pDAMAGE.
+ if loss-gain|=|0 msg &xTook {hp} points of &pDAMAGE.
+ if loss-gain|=|1 msg &Healed {hp} points of &aHEALTH.
  #hpbar-STACK
   if myHealth|=|0 quit
   if loss-gain|=|0 setsub myHealth 1
