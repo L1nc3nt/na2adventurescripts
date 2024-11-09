@@ -133,12 +133,11 @@ quit
  set hp {myHealth}
  if loss-gain|=|0 setsub hp AMNT
  if loss-gain|=|1 setadd hp AMNT
- if mxMYhealth|<|hp set hp mxMYhealth
- if 0|>|hp set hp 0
  if loss-gain|=|0 msg &xTook {AMNT} points of &pDAMAGE.
  if loss-gain|=|1 msg &Healed {AMNT} points of &aHEALTH.
  #hpbar-STACK
   if myHealth|=|0 quit
+  if myHealth|>=|mxMYhealth quit
   if loss-gain|=|0 setsub myHealth 1
   if loss-gain|=|1 setadd myHealth 1
   delay {hpDELTA}
