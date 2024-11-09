@@ -141,13 +141,14 @@ quit
  if loss-gain|=|0 setsub hp {AMNT}
  if loss-gain|=|1 setadd hp {AMNT}
  #hpbar-STACK
-  if myHealth|<=|0 quit
-  if myHealth|>=|mxMYhealth quit
+  if myHealth|=|0 quit
+  if myHealth|=|mxMYhealth quit
   if loss-gain|=|0 setsub myHealth 1
   if loss-gain|=|1 setadd myHealth 1
   delay {hpDELTA}
   call #{myHealth}-showHP
   ifnot myHealth|=|hp jump #hpbar-STACK
+ msg &xYou have &a{myHealth} HEALTH &xpoints.
 quit
 
 #nomad_Dialog_1
