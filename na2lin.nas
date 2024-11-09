@@ -141,12 +141,12 @@ quit
  if loss-gain|=|0 setsub hp {AMNT}
  if loss-gain|=|1 setadd hp {AMNT}
  #hpbar-STACK
-  if myHealth|=|0 jump #hpbar-forEND
-  if myHealth|=|mxMYhealth jump #hpbar-forEND
   if loss-gain|=|0 setsub myHealth 1
   if loss-gain|=|1 setadd myHealth 1
   delay {hpDELTA}
   call #{myHealth}-showHP
+  if myHealth|=|0 jump #hpbar-forEND
+  if myHealth|=|mxMYhealth jump #hpbar-forEND
   ifnot myHealth|=|hp jump #hpbar-STACK
  #hpbar-forEND
   msg &xYou have &a{myHealth} HEALTH &xpoints.
