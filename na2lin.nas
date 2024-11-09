@@ -131,12 +131,12 @@ quit
  if AMNT|=|0 quit
  set loss-gain {runArg2} //Boolean 0 or 1
  set hp {myHealth}
- if loss-gain|=|0 setsub hp {AMNT}
- if loss-gain|=|1 setadd hp {AMNT}
- if hp|>|mxMYhealth set hp {mxMYhealth}
- if hp|<|0 set hp 0
- if loss-gain|=|0 msg &xTook {hp} points of &pDAMAGE.
- if loss-gain|=|1 msg &Healed {hp} points of &aHEALTH.
+ if loss-gain|=|0 setsub hp AMNT
+ if loss-gain|=|1 setadd hp AMNT
+ if mxMYhealth|<|hp set hp mxMYhealth
+ if 0|>|hp set hp 0
+ if loss-gain|=|0 msg &xTook {AMNT} points of &pDAMAGE.
+ if loss-gain|=|1 msg &Healed {AMNT} points of &aHEALTH.
  #hpbar-STACK
   if myHealth|=|0 quit
   if loss-gain|=|0 setsub myHealth 1
@@ -153,7 +153,7 @@ quit
  cmd tbot ai bot1_nomad stare
  msg &sNomad:&7Oh, if it isn't &uLincent&7!!
  delay {msg-Delay}
- if item ODYSSEY_BADGE msg &sNomad:&7Mayhaps we could make an exchange; just like old times!!
+ msg &sNomad:&7Mayhaps we could make an exchange, just like old times!!
  delay {msg-Delay}
  msg &sNomad:&7The bridge out of here requires you to have a &ePASSPORT..
  delay {msg-Delay}
