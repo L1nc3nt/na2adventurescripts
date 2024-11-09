@@ -12,7 +12,7 @@
 // numbers
  set msg-Delay 800
  set hpbar-Delay 333
- set hpDELTA 10
+ set hpDELTA 200
  set myHealth 0
  set mxMYhealth 10
  set skullHealth 0
@@ -145,11 +145,9 @@ quit
   if loss-gain|=|1 setadd myHealth 1
   delay {hpDELTA}
   call #{myHealth}-showHP
-  if myHealth|=|0 jump #hpbar-forEND
-  if myHealth|=|mxMYhealth jump #hpbar-forEND
+  if myHealth|=|0 quit
+  if myHealth|=|mxMYhealth quit
   ifnot myHealth|=|hp jump #hpbar-STACK
- #hpbar-forEND
-  msg &xYou have &a{myHealth} HEALTH &xpoints.
 quit
 
 #nomad_Dialog_1
