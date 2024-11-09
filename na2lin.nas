@@ -12,7 +12,7 @@
 // numbers
  set msg-Delay 800
  set hpbar-Delay 333
- set hpDELTA 200
+ set hpDELTA 10
  set myHealth 0
  set mxMYhealth 10
  set skullHealth 0
@@ -136,11 +136,11 @@ quit
  set loss-gain {runArg2} //Boolean 0 or 1
  set hp {myHealth}
  msg RAN pt1! {loss-gain} {AMNT} {hp}
- if loss-gain|=|0 setsub hp {AMNT}
- if loss-gain|=|1 setadd hp {AMNT}
-  msg RAN pt2! {loss-gain} {AMNT} {hp}
  if loss-gain|=|0 msg &xTook {AMNT} points of &pDAMAGE.
  if loss-gain|=|1 msg &xHealed {AMNT} points of &aHEALTH.
+ if loss-gain|=|0 setsub hp {AMNT}
+ if loss-gain|=|1 setadd hp {AMNT}
+ msg RAN pt2! {loss-gain} {AMNT} {hp}
  #hpbar-STACK
   if myHealth|<=|0 quit
   if myHealth|>=|mxMYhealth quit
