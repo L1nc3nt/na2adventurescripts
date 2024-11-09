@@ -9,9 +9,6 @@
 // definehotkey dash|E
 // skins
  set nomad-skin https://i.imgur.com/x5hO1df.png
-// emoji
- set heart-emoji ♥
- set half-heart ╝
 // numbers
  set msg-Delay 800
  set hpbar-Delay 333
@@ -151,7 +148,8 @@ quit
   ifnot myHealth|=|hp jump #hpbar-STACK
 quit
 
-#print //oss #print {package}
+//oss #print-this|{package}
+#print-this
  msg {runArg1}
 quit
 
