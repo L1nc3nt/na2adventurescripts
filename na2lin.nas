@@ -12,6 +12,7 @@
 // numbers
  set msg-Delay 800
  set hpbar-Delay 333
+ set hpDELTA 200
  set myHealth 0
  set mxMYhealth 10
  set skullHealth 0
