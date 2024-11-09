@@ -1,3 +1,9 @@
+//each battle pet adds more health and skills, damage, etc.
+//whichever member of your party that you place in front will do the attacks
+//certain enemies will target certain parts of your party's arrangement for example: 1|2|target is 3|4
+//the inverse is also true, certain skills you have can only target certain parts of the enemies ararangement
+//depending of course on how you arrange your party.
+
 #first_start
 // cpemsg bot1 &fDash:&a■■■■■■■ 
 // definehotkey dash|E
@@ -131,8 +137,8 @@ quit
  if AMNT|=|0 quit
  set loss-gain {runArg2} //Boolean 0 or 1
  set hp {myHealth}
- if loss-gain|=|0 setsub hp AMNT
- if loss-gain|=|1 setadd hp AMNT
+ if loss-gain|=|0 setsub hp {AMNT}
+ if loss-gain|=|1 setadd hp {AMNT}
  if loss-gain|=|0 msg &xTook {AMNT} points of &pDAMAGE.
  if loss-gain|=|1 msg &Healed {AMNT} points of &aHEALTH.
  #hpbar-STACK
@@ -147,6 +153,7 @@ quit
 
 #print //oss #print {package}
  msg {runArg1}
+quit
 
 #nomad_Dialog_1
  cmd tbot ai bot1_nomad stare
