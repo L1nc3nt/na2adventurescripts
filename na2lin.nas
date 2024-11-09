@@ -137,7 +137,7 @@ quit
  if loss-gain|=|1 msg &Healed {AMNT} points of &aHEALTH.
  #hpbar-STACK
   if myHealth|=|0 quit
-  if myHealth|>=|mxMYhealth quit
+  if myHealth|=|mxMYhealth quit
   if loss-gain|=|0 setsub myHealth 1
   if loss-gain|=|1 setadd myHealth 1
   delay {hpDELTA}
