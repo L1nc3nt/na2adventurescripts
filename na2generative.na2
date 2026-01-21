@@ -240,6 +240,7 @@ quit
  if _modx|=|0 set _x 2
  setadd _x {_base}
  if _modx|=|0 setadd _z 1
+ if _modz|=|0 set _z 2
  setsub iterations 1
  jump #playing_my_game
 quit
