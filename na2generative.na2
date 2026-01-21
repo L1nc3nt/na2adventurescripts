@@ -73,7 +73,7 @@ quit
 #outta_cards
  msg Out of cards.
  setsub shoes 1
- if shoes|=|0 jump END_SCRIPT
+ if shoes|=|0 jump #END_SCRIPT
  jump #play_start
 quit
 
