@@ -71,6 +71,7 @@ quit
 
 #outta_cards
  msg Out of cards.
+ delay 100
  jump #play_start
 quit
 
