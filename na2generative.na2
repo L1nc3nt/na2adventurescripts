@@ -1,0 +1,245 @@
+#true_start
+ set location true_start
+// 15376 blocks max
+ set iterations 39
+// every 744 times add six to the base & add base to _x
+ set _base 0
+// -> add one until six; vertical
+ set _x 2
+// -> every six add one; horizontal
+ set _z 2
+ jump #play_start
+quit
+
+#play_start
+// 471->B, 657->P, 60->T, 609->ERROR,BAD
+ set location play_start
+ set return_block 609
+ set pick_ 0
+ set ones 32
+ set twos 32
+ set threes 32
+ set fours 32
+ set fives 32
+ set sixes 32
+ set sevens 32
+ set eights 32
+ set nines 32
+ set nones 128
+ jump #playing_my_game
+quit
+
+#pick_a_card
+ set pickit 0
+ setrandrange pickit 1 13
+ if pickit|=|1 set pick_ 1
+ if pickit|=|2 set pick_ 2
+ if pickit|=|3 set pick_ 3
+ if pickit|=|4 set pick_ 4
+ if pickit|=|5 set pick_ 5
+ if pickit|=|6 set pick_ 6
+ if pickit|=|7 set pick_ 7
+ if pickit|=|8 set pick_ 8
+ if pickit|=|9 set pick_ 9
+ if pickit|=|10 set pick_ 0
+ if pickit|=|11 set pick_ 0
+ if pickit|=|12 set pick_ 0
+ if pickit|=|13 set pick_ 0
+// reduce
+ if pickit|=|1 setsub ones 1
+ if pickit|=|2 setsub twos 1
+ if pickit|=|3 setsub threes 1
+ if pickit|=|4 setsub fours 1
+ if pickit|=|5 setsub fives 1
+ if pickit|=|6 setsub sixes 1
+ if pickit|=|7 setsub sevens 1
+ if pickit|=|8 setsub eights 1
+ if pickit|=|9 setsub nines 1
+ if pickit|>|9 setsub nones 1
+// if you run out of cards BREAK&RESTART
+ if ones|=|0 jump #outta_cards
+ if twos|=|0 jump #outta_cards
+ if threes|=|0 jump #outta_cards
+ if fours|=|0 jump #outta_cards
+ if fives|=|0 jump #outta_cards
+ if sixes|=|0 jump #outta_cards
+ if sevens|=|0 jump #outta_cards
+ if eights|=|0 jump #outta_cards
+ if nines|=|0 jump #outta_cards
+ if nones|=|0 jump #outta_cards
+quit
+
+#outta_cards
+ msg Out of cards.
+ jump #play_start
+quit
+
+#playing_my_game
+ set location playing_my_game_1
+ set playerside 0
+ set bankerside 0
+//both sides get two cards
+ call #pick_a_card
+ setadd playerside pick_
+ call #pick_a_card
+ setadd bankerside pick_
+ call #pick_a_card
+ setadd playerside pick_
+ call #pick_a_card
+ setadd bankerside pick_
+ setmod playerside 10
+ setmod bankerside 10
+ set location playing_my_game_2
+//check if 8 or 9
+ if playerside|=|9 jump #decide_the_hand
+ if bankerside|=|9 jump #decide_the_hand
+ if playerside|=|8 jump #decide_the_hand
+ if bankerside|=|8 jump #decide_the_hand
+//check if player is 6 or 7; it does not hit
+ set location playing_my_game_3
+ if playerside|>|5 jump #greater_than_five
+//determine the bankers hand
+ set location playing_my_game_4
+ if bankerside|=|7 jump #banker_is_seven
+ set location playing_my_game_b6
+ if bankerside|=|6 jump #banker_is_six
+ set location playing_my_game_b5
+ if bankerside|=|5 jump #banker_is_five
+ set location playing_my_game_b4
+ if bankerside|=|4 jump #banker_is_four
+ set location playing_my_game_b3
+ if bankerside|=|3 jump #banker_is_three
+//both sides must hit
+ set location playing_my_game_5
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ jump #hit_the_banker
+ 
+quit
+
+//for all of these player cant be higher than 5 and must hit
+//special it stays if pick_ is 8
+#banker_is_three
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ if pick_|=|8 jump #decide_the_hand
+//vv should not run if the if ^^ is true
+ jump #hit_the_banker
+ jump #decide_the_hand
+quit
+#banker_is_four
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ if pick_|=|2 jump #hit_the_banker
+ if pick_|=|3 jump #hit_the_banker
+ if pick_|=|4 jump #hit_the_banker
+ if pick_|=|5 jump #hit_the_banker
+ if pick_|=|6 jump #hit_the_banker
+ if pick_|=|7 jump #hit_the_banker
+ jump #decide_the_hand
+quit
+#banker_is_five
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ if pick_|=|4 jump #hit_the_banker
+ if pick_|=|5 jump #hit_the_banker
+ if pick_|=|6 jump #hit_the_banker
+ if pick_|=|7 jump #hit_the_banker
+ jump #decide_the_hand
+quit
+#banker_is_six
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ if pick_|=|6 jump #hit_the_banker
+ if pick_|=|7 jump #hit_the_banker
+ jump #decide_the_hand
+quit
+
+#banker_is_seven
+ call #pick_a_card
+ setadd playerside pick_
+ setmod playerside 10
+ jump #decide_the_hand
+quit
+
+#hit_the_banker
+ call #pick_a_card
+ setadd bankerside pick_
+ setmod bankerside 10
+ jump #decide_the_hand
+quit
+
+//check it
+#greater_than_five
+ set pick_ 0
+ if bankerside|<|6 call #pick_a_card
+ setmod bankerside 10
+ jump #decide_the_hand
+quit
+
+//if it can only be 8 or 9 just decide
+#decide_the_hand
+ if playerside|=|bankerside jump #return_tie
+ if playerside|>|bankerside jump #return_play
+ if playerside|<|bankerside jump #return_bank
+ if bankerside|=|playerside jump #return_tie
+ if bankerside|>|playerside jump #return_play
+ if bankerside|<|playerside jump #return_bank
+quit
+
+#return_play
+// msg bank won with {playerside} vs {bankerside}
+ set return_block 657
+ jump #place_block
+quit
+
+#return_bank
+// msg bank won with {bankerside} vs {playerside}
+ set return_block 471
+ jump #place_block
+quit
+
+#return_tie
+// msg tie with {playerside} {bankerside}
+ set return_block 60
+ jump #place_block
+quit
+
+#place_block
+// tempblock [args] [block] x y z true starting at 3 2 3 in a 9x9 square; 81 blocks.
+ tempblock {return_block} {_x} 2 {_z} true
+ jump #increase_x_and_z
+quit
+
+#increase_x_and_z
+ set location increase_x_and_z
+ if iterations|=|0 jump #END_SCRIPT
+// msg &sIteration:{iterations}
+ setadd _x 1
+ set _modx {_x}
+ set _modz {_x}
+ setsub _modx 2
+ setsub _modz 2
+ setmod _modx 6
+ setmod _modz 124
+ if _modz|=|0 setadd _base 6
+ if _modx|=|0 set _x 2
+ setadd _x {_base}
+ if _modx|=|0 setadd _z 1
+ setsub iterations 1
+ jump #playing_my_game
+quit
+
+#END_SCRIPT
+ msg ¡Script Done!
+ terminate
+quit
+
+#show_packages
+ show every single package
+quit
