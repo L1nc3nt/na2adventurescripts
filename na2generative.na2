@@ -231,7 +231,7 @@ quit
 // msg &sIteration:{iterations}
  setadd _x 1
  set _modx {_x}
- set _modz {_x}
+ set _modz {_z}
  setsub _modx 2
  setsub _modz 2
  setmod _modx 6
