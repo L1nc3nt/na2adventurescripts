@@ -203,19 +203,19 @@ quit
 
 #return_play
 // msg bank won with {playerside} vs {bankerside}
- set return_block 657
+ set return_block 144
  jump #place_block
 quit
 
 #return_bank
 // msg bank won with {bankerside} vs {playerside}
- set return_block 471
+ set return_block 325
  jump #place_block
 quit
 
 #return_tie
 // msg tie with {playerside} {bankerside}
- set return_block 60
+ set return_block 471
  jump #place_block
 quit
 
