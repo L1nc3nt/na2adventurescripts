@@ -4,7 +4,7 @@
  set shoes 3
  set iterations 15375
 // every 744 times add six to the base & add base to _x
- set _base 0
+ set _base 2
 // -> add one until six; vertical
  set _x 2
 // -> every six add one; horizontal
@@ -236,8 +236,7 @@ quit
  setmod _modx 6
  setmod _modz 124
  if _modz|=|0 setadd _base 6
- if _modx|=|0 set _x 2
- setadd _x {_base}
+ if _modx|=|0 set _x {_base}
  if _modx|=|0 setadd _z 1
  if _modz|=|0 set _z 2
  setsub iterations 1
