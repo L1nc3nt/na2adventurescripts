@@ -12,6 +12,12 @@
  jump #play_start
 quit
 
+#END_SCRIPT
+ set shoes 3
+ msg ¡Script Done!
+ terminate
+quit
+
 #play_start
 // 471->B, 657->P, 60->T, 609->ERROR,BAD
  set location play_start
@@ -236,12 +242,6 @@ quit
  if _modx|=|0 setadd _z 1
  setsub iterations 1
  jump #playing_my_game
-quit
-
-#END_SCRIPT
- set shoes 4
- msg ¡Script Done!
- terminate
 quit
 
 #show_packages
