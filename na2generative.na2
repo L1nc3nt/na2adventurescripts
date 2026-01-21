@@ -239,6 +239,7 @@ quit
 quit
 
 #END_SCRIPT
+ set shoes 4
  msg ¡Script Done!
  terminate
 quit
