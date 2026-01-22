@@ -43,11 +43,17 @@ quit
  if _mode|=|6 set pblock 568
  if _mode|=|6 set bblock 713
  if _mode|=|6 set tblock 678
+ set iterations 15375
+ set _base 2
+ set _x 2
+ set _z 2
+ msg Now in mode {_mode}
+ jump #play_start
 quit
 
 #END_SCRIPT
  set shoes 3
- msg ¬°Script Done!
+//msg ¬°Script Done!
  terminate
 quit
 
