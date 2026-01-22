@@ -9,7 +9,40 @@
  set _x 2
 // -> every six add one; horizontal
  set _z 2
+// set mode to 1 and the blocks it uses
+ set _mode 1
+ set pblock 144
+ set bblock 325
+ set tblock 471
  jump #play_start
+quit
+
+#CHANGE_MODE
+ setadd _mode 1
+ if _mode|=|7 set _mode 1
+ if _mode|=|1 set pblock 144
+ if _mode|=|1 set bblock 325
+ if _mode|=|1 set tblock 471
+//LandandWater
+ if _mode|=|2 set pblock 216
+ if _mode|=|2 set bblock 445
+ if _mode|=|2 set tblock 464
+//BlackandWhite
+ if _mode|=|3 set pblock 1
+ if _mode|=|3 set bblock 365
+ if _mode|=|3 set tblock 729
+//Lipstick
+ if _mode|=|4 set pblock 653
+ if _mode|=|4 set bblock 672
+ if _mode|=|4 set tblock 691
+//Green
+ if _mode|=|5 set pblock 155
+ if _mode|=|5 set bblock 64
+ if _mode|=|5 set tblock 55
+//Fire
+ if _mode|=|6 set pblock 568
+ if _mode|=|6 set bblock 713
+ if _mode|=|6 set tblock 678
 quit
 
 #END_SCRIPT
@@ -203,19 +236,19 @@ quit
 
 #return_play
 // msg bank won with {playerside} vs {bankerside}
- set return_block 144
+ set return_block {pblock}
  jump #place_block
 quit
 
 #return_bank
 // msg bank won with {bankerside} vs {playerside}
- set return_block 325
+ set return_block {bblock}
  jump #place_block
 quit
 
 #return_tie
 // msg tie with {playerside} {bankerside}
- set return_block 471
+ set return_block {tblock}
  jump #place_block
 quit
 
