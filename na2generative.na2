@@ -14,7 +14,7 @@ quit
 
 #END_SCRIPT
  set shoes 3
- msg ¡Script Done!
+ msg ¬°Script Done!
  terminate
 quit
 
@@ -77,7 +77,7 @@ quit
 quit
 
 #outta_cards
- msg Out of cards.
+// msg Out of cards.
  setsub shoes 1
  if shoes|=|0 jump #END_SCRIPT
  jump #play_start
@@ -221,8 +221,16 @@ quit
 
 #place_block
 // tempblock [args] [block] x y z true starting at 3 2 3 in a 9x9 square; 81 blocks.
- tempblock {return_block} {_x} 2 {_z} true
+ tempblock {return_block} {_x} 4 {_z} true
  jump #increase_x_and_z
+quit
+
+#if_x&z_then
+ set _modz {_z}
+ setmod _modz 126
+ if _modz|=|0 setadd _base 6
+ if _modz|=|0 set _z 2
+ if _modz|=|0 set _x {_base}
 quit
 
 #increase_x_and_z
@@ -231,14 +239,11 @@ quit
 // msg &sIteration:{iterations}
  setadd _x 1
  set _modx {_x}
- set _modz {_z}
  setsub _modx 2
  setmod _modx 6
- setmod _modz 124
- if _modz|=|0 setadd _base 6
  if _modx|=|0 set _x {_base}
  if _modx|=|0 setadd _z 1
- if _modz|=|0 set _z 2
+ if _modx|=|0 call #if_x&z_then
  setsub iterations 1
  jump #playing_my_game
 quit
