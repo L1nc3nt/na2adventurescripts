@@ -25,8 +25,8 @@ quit
  if _mode|=|1 set tblock 471
 //LandandWater
  if _mode|=|2 set pblock 216
- if _mode|=|2 set bblock 445
- if _mode|=|2 set tblock 464
+ if _mode|=|2 set bblock 464
+ if _mode|=|2 set tblock 445
 //BlackandWhite
  if _mode|=|3 set pblock 1
  if _mode|=|3 set bblock 365
@@ -36,7 +36,7 @@ quit
  if _mode|=|4 set bblock 672
  if _mode|=|4 set tblock 691
 //Green
- if _mode|=|5 set pblock 155
+ if _mode|=|5 set pblock 316
  if _mode|=|5 set bblock 64
  if _mode|=|5 set tblock 55
 //Fire
@@ -53,7 +53,7 @@ quit
 
 #END_SCRIPT
  set shoes 3
-//msg ¬°Script Done!
+//msg ┬¼┬░Script Done!
  terminate
 quit
 
