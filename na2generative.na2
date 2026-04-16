@@ -254,7 +254,7 @@ quit
 #if_x&z_then
  set _modz {_z}
  setmod _modz 252
- if _modz|=|0 setadd _base 7
+ if _modz|=|0 setadd _base 6
  if _modz|=|0 set _z 2
  if _modz|=|0 set _x {_base}
 quit
